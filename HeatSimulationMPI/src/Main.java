@@ -12,14 +12,14 @@ public class Main {
     private static double[][] cellTemperature; // stores temperature of each cell in the grid
     private static boolean[][] fixedPoints; // indicates if a cell is a fixed heat point
     private static final double STABILITY_THRESHOLD = 0.25; // threshold for stability check
-    private static final int MAX_ITERATIONS = 10000; // maximum number of iterations for convergence
+    private static final int MAX_ITERATIONS = 100000; // maximum number of iterations for convergence
 
     // initializes the grid with random heat points
     public static void initialize(int gridWidth, int gridHeight, int heatPoints) {
         cellTemperature = new double[gridWidth][gridHeight];
         fixedPoints = new boolean[gridWidth][gridHeight];
 
-        Random rand = new Random();
+        Random rand = new Random(89211208);
         for (int i = 0; i < heatPoints; i++) {
             int x = rand.nextInt(gridWidth); // random x-coordinate
             int y = rand.nextInt(gridHeight); // random y-coordinate

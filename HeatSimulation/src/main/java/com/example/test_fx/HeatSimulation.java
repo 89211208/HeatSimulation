@@ -3,8 +3,6 @@ package com.example.test_fx;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -214,7 +212,7 @@ public class HeatSimulation extends Application {
     // updates the temperature grid and renders the new state
     private boolean updateAndRender(GraphicsContext gc) {
         boolean thresholdReached = true;
-        double threshold = 0.1; // example threshold for temperature change
+        double threshold = 0.25; // example threshold for temperature change
 
         int gridWidth = frameWidth / PIXEL_SIZE;
         int gridHeight = frameHeight / PIXEL_SIZE;
@@ -333,7 +331,7 @@ public class HeatSimulation extends Application {
                     if (!fixedPoints[x][y]) {
                         double newTemp = calculateTemperature(x, y);
                         if (Math.abs(newTemp - cellTemperature[x][y]) > STABILITY_THRESHOLD) {
-                            stable = false; // mark as not stable if temperature change is significant
+                            stable = false;
                         }
                         newTemperatures[x][y] = newTemp;
                     } else {
@@ -362,7 +360,7 @@ public class HeatSimulation extends Application {
         }
     }
 
-    // entry point for the application
+    // entry point
     public static void main(String[] args) {
         dialogBox(); // show dialog box for user input
         if (start) {
